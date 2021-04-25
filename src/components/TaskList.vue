@@ -1,7 +1,6 @@
 <template>
-  <div class="task-list"> 
-      <h1>Marina la plus belle</h1>
-      <div class="input-group mb-2">
+  <div class="task-list">
+      <div class="input-group mb-2 mt-5">
           <div class="input-group-prepend">
               <div class="input-group-text">New task :</div>
           </div>
@@ -25,7 +24,7 @@
               <div class="input-group">
                   <div class="input-group-prepend">
                       <div class="input-group-text">
-                          <input type="checkbox" v-model="todo.checked" @click="todo.toggleChecked();updateTasksStats()">
+                          <input type="checkbox" v-model="todo.checked" @click="todo.toggleChecked(),updateTasksStats()">
                       </div>
                   </div>
                   <input class="form-control w-50 float-center" v-bind:value="todo.todo" v-on:change="updateTaskName($event,todo)">
@@ -126,9 +125,10 @@
           this.updateListView();
       }
 
-      updateTaskName(value: Event, todo: Todo){
-          todo.todo=value.target.value;
-          console.log(value.target.value);
+      updateTaskName(e: Event, todo: Todo){
+          const target = e.target as HTMLTextAreaElement
+          todo.todo=target.value;
+          console.log(target.value);
           this.updateListView();
       }
 
@@ -138,8 +138,3 @@
 
 </script>
 
-<style>
-    .list-group-item-line-through{
-        text-decoration: line-through;
-    }
-</style>
