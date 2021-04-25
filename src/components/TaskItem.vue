@@ -19,6 +19,7 @@
 <script>
     export default {
         name: "TaskItem",
+        //Methods imported from parent component
         props :{
             tasksListView : { type: Array},
             updateTasksStats:{type: Function},

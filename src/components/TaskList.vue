@@ -30,6 +30,7 @@
   import Component from 'vue-class-component';
   import TaskItem from "@/components/TaskItem.vue";
 
+  //Representation of a Todo element
   class Todo {
       todo: string;
       checked: boolean;
@@ -56,6 +57,7 @@
       nbTasksToDo = 0;
       selectedFilter = '0';
 
+      //Adding a task to the list
       addTask() {
           console.log("Add new task " + this.todoInput)
           if (this.todoInput != undefined && this.todoInput != "") {
@@ -65,6 +67,7 @@
           }
       }
 
+      //Remove a task of the list
       deleteTask(todo: Todo) {
           console.log("Remove " + todo)
           this.tasksList = this.tasksList.filter((todoItem) => {
@@ -73,12 +76,14 @@
           this.updateListView();
       }
 
+      //Remove all tasks
       removeAllTasks() {
           console.log("Remove all tasks")
           this.tasksList = [];
           this.updateListView();
       }
 
+      //Refresh task stats
       updateTasksStats() {
           console.log("Refresh task stats")
           this.nbTasksDone = 0;
